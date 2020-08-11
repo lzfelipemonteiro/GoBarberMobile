@@ -43,7 +43,7 @@ interface SignInFormData {
 
 const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
-  const passworInputRef = useRef<TextInput>(null);
+  const passwordInputRef = useRef<TextInput>(null);
 
   const navigation = useNavigation();
 
@@ -140,11 +140,11 @@ const SignIn: React.FC = () => {
                 autoCapitalize="none"
                 returnKeyType="next"
                 onSubmitEditing={() => {
-                  passworInputRef.current?.focus();
+                  passwordInputRef.current?.focus();
                 }}
               />
               <Input
-                ref={passworInputRef}
+                ref={passwordInputRef}
                 name="password"
                 icon="lock"
                 placeholder="Senha"
