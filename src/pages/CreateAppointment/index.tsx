@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState, useMemo } from 'react';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Feather';
 import { format } from 'date-fns';
+import ptBR from 'date-fns/locale/pt-BR';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 import { Platform, Alert } from 'react-native';
@@ -158,6 +159,12 @@ const CreateAppointment: React.FC = () => {
       });
   }, [availability]);
 
+  const dateFormatted = useMemo(() => {
+    return format(selectedDate, "EEEE', dia' dd 'de' MMMM 'de' yyyy", {
+      locale: ptBR,
+    });
+  }, [selectedDate]);
+
   return (
     <Container>
       <Header>
@@ -195,9 +202,7 @@ const CreateAppointment: React.FC = () => {
           <Title>Escolha a data</Title>
 
           <OpenDatePickerButton onPress={handleToggleDatePicker}>
-            <OpenDatePickerButtonText>
-              Escolha outra data
-            </OpenDatePickerButtonText>
+            <OpenDatePickerButtonText>{dateFormatted}</OpenDatePickerButtonText>
           </OpenDatePickerButton>
 
           {showDatePicker && (
