@@ -6,12 +6,12 @@ import React, {
   useImperativeHandle,
   forwardRef,
 } from 'react';
-import { TextInputProperties } from 'react-native';
+import { TextInputProps } from 'react-native';
 import { useField } from '@unform/core';
 
 import { Container, TextInput, Icon } from './styles';
 
-interface InputProps extends TextInputProperties {
+interface InputProps extends TextInputProps {
   name: string;
   icon: string;
   containerStyle?: {};
@@ -25,7 +25,7 @@ interface InputRef {
   focus(): void;
 }
 
-const Input: React.RefForwardingComponent<InputRef, InputProps> = (
+const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
   { name, icon, containerStyle = {}, ...rest },
   ref,
 ) => {
